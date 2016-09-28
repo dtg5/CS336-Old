@@ -1,4 +1,4 @@
-p {color: blue;}
+p.second {color: blue;}
 strong {color: red; text-decoration: underline;}
 em {color: green;}
 .carrot { color: orange; }
