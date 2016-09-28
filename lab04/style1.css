@@ -1,3 +1,6 @@
 p {color: blue;}
 strong {color: red; text-decoration: underline;}
 em {color: green;}
+.carrot { color: orange; }
+.spinach { color: green; }
+#first { font-style: italic; }
