@@ -1,0 +1,21 @@
+{
+  "name": "lab07",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "kill $(pgrep node) ; nodemon --ignore public/ server.js &",
+    "stop": "kill $(pgrep node)"
+  },
+  "author": "dtg5",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "http-status-codes": "^1.0.6",
+    "jquery": "^3.1.1",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
