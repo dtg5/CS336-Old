@@ -1,6 +1,6 @@
 Well, everything seems to be working pretty well for me.
 
-It seems like changes made wil update live with the 3001 proxy, but not with the 3000 port.
+It appears that changes made to the modules will update live with the 3001 proxy, but not with the 3000 port.
 
 The /api/comments page pulls up the contents of comments.json as unformatted text.
 
