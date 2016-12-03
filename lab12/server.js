@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/comments', function(req, res) {
-    db.collection("comments").find({}).toArray(function(err, docs) {
+    db.collection("cs336").find({}).toArray(function(err, docs) {
         if (err) throw err;
         res.json(docs);
     });
@@ -44,9 +44,9 @@ app.post('/api/comments', function(req, res) {
         author: req.body.author,
         text: req.body.text,
     };
-    db.collection("comments").insertOne(newComment, function(err, result) {
+    db.collection("cs336").insertOne(newComment, function(err, result) {
         if (err) throw err;
-        db.collection("comments").find({}).toArray(function(err, docs) {
+        db.collection("cs336").find({}).toArray(function(err, docs) {
             if (err) throw err;
             res.json(docs);
         });
@@ -54,7 +54,7 @@ app.post('/api/comments', function(req, res) {
 });
 
 app.get('/api/comments/:id', function(req, res) {
-    db.collection("comments").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
+    db.collection("cs336").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
         if (err) throw err;
         res.json(docs);
     });
@@ -68,7 +68,7 @@ app.put('/api/comments/:id', function(req, res) {
         { $set: update },
         function(err, result) {
             if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
+            db.collection("cs336").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
@@ -76,11 +76,11 @@ app.put('/api/comments/:id', function(req, res) {
 });
 
 app.delete('/api/comments/:id', function(req, res) {
-    db.collection("comments").deleteOne(
+    db.collection("cs336").deleteOne(
         {'id': Number(req.params.id)},
         function(err, result) {
             if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
+            db.collection("cs336").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
