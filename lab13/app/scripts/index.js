@@ -4,10 +4,10 @@ import { Router, Route, Redirect, browserHistory } from 'react-router';
 
 import CommentBox from './commentBox';
 import CommentEdit from './commentEdit';
+import { StoreTools } from './flux';
 
 import '../css/base.css';
 
-import { StoreTools } from './flux';
 StoreTools.startLoadingComments();
 
 ReactDOM.render((
