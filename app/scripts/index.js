@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CommentBox from './commentbox';
-import CommentEdit from './commentEdit';
 import { Router, Route, Redirect, browserHistory } from 'react-router';
+
+import CommentBox from './commentBox';
+import CommentEdit from './commentEdit';
 
 import '../css/base.css';
 
-// REACT RENDER
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={CommentBox}/>
