@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
-    	new webpack.DefinePlugin({
+        new webpack.DefinePlugin({
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')
             }
