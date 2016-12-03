@@ -1,3 +1,15 @@
+/**
+ * This file provided by Facebook is for non-commercial testing and evaluation
+ * purposes only. Facebook reserves all rights not expressly granted.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -20,7 +32,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/comments', function(req, res) {
-    db.collection("comments").find({}).toArray(function(err, docs) {
+    db.collection("cs336").find({}).toArray(function(err, docs) {
         if (err) throw err;
         res.json(docs);
     });
@@ -32,9 +44,9 @@ app.post('/api/comments', function(req, res) {
         author: req.body.author,
         text: req.body.text,
     };
-    db.collection("comments").insertOne(newComment, function(err, result) {
+    db.collection("cs336").insertOne(newComment, function(err, result) {
         if (err) throw err;
-        db.collection("comments").find({}).toArray(function(err, docs) {
+        db.collection("cs336").find({}).toArray(function(err, docs) {
             if (err) throw err;
             res.json(docs);
         });
@@ -42,7 +54,7 @@ app.post('/api/comments', function(req, res) {
 });
 
 app.get('/api/comments/:id', function(req, res) {
-    db.collection("comments").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
+    db.collection("cs336").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
         if (err) throw err;
         res.json(docs);
     });
@@ -51,12 +63,12 @@ app.get('/api/comments/:id', function(req, res) {
 app.put('/api/comments/:id', function(req, res) {
     var updateId = Number(req.params.id);
     var update = req.body;
-    db.collection('comments').updateOne(
+    db.collection('cs336').updateOne(
         { id: updateId },
         { $set: update },
         function(err, result) {
             if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
+            db.collection("cs336").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
@@ -64,11 +76,11 @@ app.put('/api/comments/:id', function(req, res) {
 });
 
 app.delete('/api/comments/:id', function(req, res) {
-    db.collection("comments").deleteOne(
+    db.collection("cs336").deleteOne(
         {'id': Number(req.params.id)},
         function(err, result) {
             if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
+            db.collection("cs336").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
@@ -83,9 +95,7 @@ app.listen(app.get('port'), function() {
 });
 
 // This assumes that the MongoDB password has been set as an environment variable.
-var mongoURL = 'mongodb://cs336:' +
-               process.env.MONGO_PASSWORD +
-               '@ds015995.mlab.com:15995/kvlinden-cs336';
+var mongoURL = 'mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds017185.mlab.com:17185/cs336_dtg5';
 MongoClient.connect(mongoURL, function(err, dbConnection) {
     if (err) throw err;
     db = dbConnection;
