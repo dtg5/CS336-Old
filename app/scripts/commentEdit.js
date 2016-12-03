@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
+import $ from 'jquery';
+
+import { API_URL } from './global';
 import { store, ActionTools, StoreTools } from './flux';
 
 module.exports = React.createClass({
@@ -9,16 +12,6 @@ module.exports = React.createClass({
     componentDidMount: function() {
         let commentToEdit = StoreTools.findComment(this.props.params.id, store.getState().data);
         this.setState({author: commentToEdit.author, text: commentToEdit.text});
-    },
-    componentDidUpdate: function(prevProps) {
-        if (this.props.params.id != prevProps.params.id) {
-            this.loadData();
-        }
-    },
-    loadData: function() {
-        $.ajax(API_URL + "/" + this.props.params.id) .done(function(comments) {
-            this.setState(comments[0]);
-        }.bind(this));
     },
     handleAuthorChange: function(e) {
         this.setState({author: e.target.value});
@@ -36,22 +29,10 @@ module.exports = React.createClass({
         }
         store.dispatch(ActionTools.editComment(Number(this.props.params.id), updatedComment));
         this.context.router.push('/');
-        .done(function(comments){
-            this.context.router.push('/');
-        }.bind(this))
-        .fail(function(xhr, status, errorThrown) {
-            console.error(API_URL, status, errorThrown.toString());
-        }.bind(this));
     },
     handleDelete: function() {
         store.dispatch(ActionTools.deleteComment(Number(this.props.params.id), updatedComment));
         this.context.router.push('/');
-        .done(function(comments){
-            this.context.router.push('/');
-        }.bind(this))
-        .fail(function(xhr, status, errorThrown) {
-            console.error(API_URL, status, errorThrown.toString());
-        }.bind(this));
     },
     render: function() {
         return (
