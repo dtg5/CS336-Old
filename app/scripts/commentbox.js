@@ -3,6 +3,7 @@ import $ from 'jquery';
 
 import CommentList from './commentlist';
 import CommentForm from './commentform';
+import { API_URL, POLL_INTERVAL } from './global';
 
 // COMMENT BOX
 module.exports = React.createClass({

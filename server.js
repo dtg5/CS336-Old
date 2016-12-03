@@ -69,6 +69,9 @@ app.post('/api/comments', function(req, res) {
   });
 });
 
+// Send all routes/methods not specified above to the app root.
+app.use('*', express.static('app'));
+
 MongoClient.connect(mongoURL, function(err, dbConnection) {
         if (err) throw err;
         db = dbConnection;
