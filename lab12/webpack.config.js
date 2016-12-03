@@ -16,8 +16,13 @@ module.exports = {
         ]
     },
     plugins: [
-    new HtmlWebpackPlugin({template: __dirname + "/app/index.tmpl.html"}),
-    new webpack.HotModuleReplacementPlugin()
+        new HtmlWebpackPlugin({template: __dirname + "/app/index.tmpl.html"}),
+        new webpack.HotModuleReplacementPlugin()
+        new webpack.DefinePlugin({
+            'process.env':{
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
     ],
     devServer: {
         port: 3001,
