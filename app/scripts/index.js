@@ -10,6 +10,9 @@ import { Router, Route, Redirect, browserHistory } from 'react-router';
 import CommentBox from './commentBox';
 import CommentEdit from './commentEdit';
 
+import eventBox from './eventBox';
+import eventEdit from './eventEdit';
+
 import '../css/base.css';
 
 
