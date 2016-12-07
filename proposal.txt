@@ -1,5 +1,0 @@
-I am actually very interested in helping Lisa with the Video Game Sphere student org website.  I have not yet collaborated with her on her ideas for the project, but I have a fair bit of experience dealing with CSS and HTML layouts.  I can even help with animations, if we decide to make things especially flashy.  This will also provide me with some good experience for possibly making a website for my own student org in the future.
-
-I imagine we’ll want a sign-up form, and probably an embedded calendar for upcoming events.  There can be widgets for social media as well, and a section describing current student leaders.
-
-In order to fulfill the concepts of the class, we can certainly make a custom comment section, although a Disqus or Facebook plugin implementation will probably be the more permanent solution to that need.
