@@ -36,7 +36,7 @@ module.exports = React.createClass({
        <form className="eventForm" onSubmit={this.handleSubmit}>
         <input
           type="text"
-          placeholder="Your name"
+          placeholder="Title of event"
           value={this.state.title}
           onChange={this.handleTitleChange}
         />
