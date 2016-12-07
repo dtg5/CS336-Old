@@ -1,7 +1,8 @@
+
 import React from 'react';
 import Remarkable from 'remarkable';
+import { Link } from 'react-router';
 
-// COMMENT
 module.exports = React.createClass({
   rawMarkup: function() {
     var md = new Remarkable();
@@ -11,11 +12,12 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="comment">
-        <h2 className="commentAuthor">
-          {this.props.author}
-        </h2> 
+      <div className="event">
+        <h2 className="eventTitle">
+          {this.props.title}
+        </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
+        <Link to={'/' + this.props.id}>Edit</Link>
       </div>
     );
   }
