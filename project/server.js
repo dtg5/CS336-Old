@@ -50,7 +50,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/comments', function(req, res) {
-    db.collection("comments").find({}).toArray(function(err, docs) {
+    db.collection("VGScomments").find({}).toArray(function(err, docs) {
         if (err) throw err;
         res.json(docs);
     });
@@ -62,10 +62,10 @@ app.post('/api/comments', function(req, res) {
         author: req.body.author,
         text: req.body.text,
     };
-    db.collection("comments").insertOne(newComment, function(err, result) {
+    db.collection("VGScomments").insertOne(newComment, function(err, result) {
         if (err) throw err;
         var newId = result.insertedId;
-        db.collection("comments").find({}).toArray(function(err, docs) {
+        db.collection("VGScomments").find({}).toArray(function(err, docs) {
             if (err) throw err;
             res.json(docs);
         });
@@ -74,7 +74,7 @@ app.post('/api/comments', function(req, res) {
 
 //Get, put, delete with id
 app.get('/api/comments/:id', function(req, res) {
-    db.collection("comments").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
+    db.collection("VGScomments").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
         if (err) throw err;
         res.json(docs);
     });
@@ -88,7 +88,7 @@ app.put('/api/comments/:id', function(req, res) {
         { $set: update },
         function(err, result) {
             if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
+            db.collection("VGScomments").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
@@ -100,7 +100,7 @@ app.delete('/api/comments/:id', function(req, res) {
         {'id': Number(req.params.id)},
         function(err, result) {
             if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
+            db.collection("VGScomments").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
