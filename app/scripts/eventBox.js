@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 import eventList from './eventList';
 import eventForm from './eventForm';
-import { API_URL, POLL_INTERVAL } from './global';
+import { API_URL2, POLL_INTERVAL } from './global';
 
 module.exports = React.createClass({
     getInitialState: function() {
@@ -12,7 +12,7 @@ module.exports = React.createClass({
     },
     loadeventsFromServer: function() {
         $.ajax({
-            url: API_URL,
+            url: API_URL2,
             dataType: 'json',
             cache: false,
         })
@@ -29,7 +29,7 @@ module.exports = React.createClass({
         var newevents = events.concat([event]);
         this.setState({data: newevents});
         $.ajax({
-            url: API_URL,
+            url: API_URL2,
             dataType: 'json',
             type: 'POST',
             data: event,
@@ -39,7 +39,7 @@ module.exports = React.createClass({
          }.bind(this))
          .fail(function(xhr, status, errorThrown) {
              this.setState({data: events});
-             console.error(API_URL, status, errorThrown.toString());
+             console.error(API_URL2, status, errorThrown.toString());
          }.bind(this));
     },
     componentDidMount: function() {
@@ -51,7 +51,7 @@ module.exports = React.createClass({
             <div className="eventBox">
                 <h1>events</h1>
                 <eventList data={this.state.data} />
-                <eventForm oneventSubmit={this.handleEventSubmit} />
+                <eventForm onEventSubmit={this.handleEventSubmit} />
             </div>
         );
     }

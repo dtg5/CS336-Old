@@ -25,3 +25,11 @@ ReactDOM.render((
     </Router>
 ), document.getElementById('content')
 );
+
+ReactDOM.render((
+    <Router history={browserHistory}>
+        <Route path="/" component={eventBox}/>
+        <Route path="/:id" component={eventEdit} />
+    </Router>
+), document.getElementById('event')
+);

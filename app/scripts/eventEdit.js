@@ -82,7 +82,7 @@ module.exports = React.createClass({
                     <input
                         type="text"
                         value={this.state.title}
-                        onChange={this.handletitleChange}
+                        onChange={this.handleTitleChange}
                     />
                     <input
                         type="text"
