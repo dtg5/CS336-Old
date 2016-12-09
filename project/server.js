@@ -49,6 +49,8 @@ app.use(function(req, res, next) {
     next();
 });
 
+
+//COMMENTS
 app.get('/api/comments', function(req, res) {
     db.collection("VGScomments").find({}).toArray(function(err, docs) {
         if (err) throw err;
@@ -56,6 +58,7 @@ app.get('/api/comments', function(req, res) {
     });
 });
 
+//EVENTS
 app.get('/api/events', function(req, res) {
     db.collection("VGSevents").find({}).toArray(function(err, docs) {
         if (err) throw err;
@@ -63,6 +66,7 @@ app.get('/api/events', function(req, res) {
     });
 });
 
+//COMMENTS
 app.post('/api/comments', function(req, res) {
     var newComment = {
         id: Date.now(),
@@ -79,7 +83,26 @@ app.post('/api/comments', function(req, res) {
     });
 });
 
-//Get, put, delete with id
+//EVENTS
+app.post('/api/events', function(req, res) {
+    var newComment = {
+        id: Date.now(),
+        title: req.body.title,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        description: req.body.description,
+    };
+    db.collection("VGSevents").insertOne(newComment, function(err, result) {
+        if (err) throw err;
+        var newId = result.insertedId;
+        db.collection("VGSevents").find({}).toArray(function(err, docs) {
+            if (err) throw err;
+            res.json(docs);
+        });
+    });
+});
+
+//Get, put, delete with id COMMENTS
 app.get('/api/comments/:id', function(req, res) {
     db.collection("VGScomments").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
         if (err) throw err;
