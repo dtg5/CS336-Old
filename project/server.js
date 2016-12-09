@@ -56,6 +56,13 @@ app.get('/api/comments', function(req, res) {
     });
 });
 
+app.get('/api/events', function(req, res) {
+    db.collection("VGSevents").find({}).toArray(function(err, docs) {
+        if (err) throw err;
+        res.json(docs);
+    });
+});
+
 app.post('/api/comments', function(req, res) {
     var newComment = {
         id: Date.now(),
@@ -83,7 +90,7 @@ app.get('/api/comments/:id', function(req, res) {
 app.put('/api/comments/:id', function(req, res) {
     var updateId = Number(req.params.id);
     var update = req.body;
-    db.collection('comments').updateOne(
+    db.collection('VGScomments').updateOne(
         { id: updateId },
         { $set: update },
         function(err, result) {
@@ -96,11 +103,46 @@ app.put('/api/comments/:id', function(req, res) {
 });
 
 app.delete('/api/comments/:id', function(req, res) {
-    db.collection("comments").deleteOne(
+    db.collection("VGScomments").deleteOne(
         {'id': Number(req.params.id)},
         function(err, result) {
             if (err) throw err;
             db.collection("VGScomments").find({}).toArray(function(err, docs) {
+                if (err) throw err;
+                res.json(docs);
+            });
+        });
+});
+
+//Get, put, delete with id EVENTS
+app.get('/api/events/:id', function(req, res) {
+    db.collection("VGSevents").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
+        if (err) throw err;
+        res.json(docs);
+    });
+});
+
+app.put('/api/events/:id', function(req, res) {
+    var updateId = Number(req.params.id);
+    var update = req.body;
+    db.collection('VGSevents').updateOne(
+        { id: updateId },
+        { $set: update },
+        function(err, result) {
+            if (err) throw err;
+            db.collection("VGSevents").find({}).toArray(function(err, docs) {
+                if (err) throw err;
+                res.json(docs);
+            });
+        });
+});
+
+app.delete('/api/events/:id', function(req, res) {
+    db.collection("VGSevents").deleteOne(
+        {'id': Number(req.params.id)},
+        function(err, result) {
+            if (err) throw err;
+            db.collection("VGSevents").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
