@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
 
-import { API_URL } from './global';
+import { API_URL2 } from './global';
 
 module.exports = React.createClass({
     getInitialState: function() {
@@ -17,7 +17,7 @@ module.exports = React.createClass({
         }
     },
     loadData: function() {
-        $.ajax(API_URL + "/" + this.props.params.id) .done(function(events) {
+        $.ajax(API_URL2 + "/" + this.props.params.id) .done(function(events) {
             this.setState(events[0]);
         }.bind(this));
     },
@@ -25,7 +25,7 @@ module.exports = React.createClass({
         this.setState({title: e.target.value});
     },
     handleDescriptionChange: function(e) {
-        this.setState({text: e.target.value});
+        this.setState({description: e.target.value});
     },
     handleStartDateChange: function(e) {
     this.setState({startDate: e.target.value});
@@ -39,12 +39,12 @@ module.exports = React.createClass({
     handleUpdate: function() {
         var updatedEvent = {
             title: this.state.title.trim(),
-            text: this.state.description.trim(),
+            description: this.state.description.trim(),
             startDate: this.state.startDate.trim(),
             endDate: this.state.endDate.trim()
         }
         $.ajax({
-            url: API_URL + "/" + this.props.params.id,
+            url: API_URL2 + "/" + this.props.params.id,
             dataType: 'json',
             type: 'PUT',
             contentType:'application/json',
@@ -54,14 +54,14 @@ module.exports = React.createClass({
                 this.context.router.push('/');
             }.bind(this))
             .fail(function(xhr, status, errorThrown) {
-                console.error(API_URL, status, errorThrown.toString());
+                console.error(API_URL2, status, errorThrown.toString());
             }.bind(this));
     },
 
     //handle delete
      handleDelete: function() {
         $.ajax({
-            url: API_URL + "/" + this.props.params.id,
+            url: API_URL2 + "/" + this.props.params.id,
             dataType: 'json',
             type: 'DELETE',
         })
@@ -69,7 +69,7 @@ module.exports = React.createClass({
                 this.context.router.push('/');
             }.bind(this))
             .fail(function(xhr, status, errorThrown) {
-                console.error(API_URL, status, errorThrown.toString());
+                console.error(API_URL2, status, errorThrown.toString());
             }.bind(this));
     },
     
@@ -96,7 +96,7 @@ module.exports = React.createClass({
                     />
                      <input
                         type="date"
-                        value={this.state.startDate}
+                        value={this.state.endDate}
                         onChange={this.handleEndDateChange}
                      />
                     <button type="button" onClick={this.handleUpdate}>Update</button>
