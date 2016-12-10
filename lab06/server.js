@@ -1,9 +1,37 @@
-/* Lab 6 Answers:
- * a. 
+/* Lab 6 Q's & A's:
+ * Exercise 6.1
+ * a. Identify the request methods that you can and can’t test using the two tools listed above. If a method cannot be testing using a particular tool, explain why this is the case. List the Curl commands you used successfully.  
  * 
+ * ANSWER:
+ * Chrome developer tools, without the aid of any additional extensions, can only
+ * show requests and responses based on the elements a browser can normally interact  
+ * with.  For example, if you navigate to any URL, you can see the GET request in action, 
+ * and if there is a form with POST, PUT, and DELETE features, the developer tools will
+ * show those requests and the responses being made.
  * 
+ * As for Curl, HEAD produced a "bad range" response, and it also printed out the Hello, * Express Route! message. I was able to successfully test GET at any URL, but of course 
+ * I needed to specifically be on localhost:3000/user to get a good response to PUT, 
+ * POST, and DELETE. Amusingly, LISTEN gives a response too, but the response code is 
+ * empty.
  * 
+ * b. What is the most appropriate HTTP response code for pages that aren’t defined by an Express route?
  * 
+ * ANSWER:
+ * I would say your run-of-the-mill 404 NOT FOUND would be best for that.
+ * 
+ * Exercise 6.1
+ * a. What HTTP methods do forms support?
+ * 
+ * ANSWER:
+ * PUT, POST, AND DELETE.
+ * 
+ * b. How is the form data being passed back to the server and what syntactic form does it take? Is the data modified in any way?
+ * 
+ * ANSWER: 
+ * The form data is being passed to the server as an HTTP request, in javascript I guess?
+ * There isn't really anything to modify, but using cookie/set does create a cookie file.
+ * 
+ *
  * This implements some HTTP method/code, form and cookie examples.
  */
 
@@ -94,17 +122,15 @@ app.get("/cookies", function(req, res) {
     }
     res.send("Hello, cookies!<br> " + cookieMessage);
 });
+
 app.get("/cookies/set", function(req, res) {
     res.cookie("cookieName", "cookieValue")
     res.send("Cookie is set.");
 });
+
 app.get("/cookies/clear", function(req, res) {
     res.clearCookie("cookieName");
     res.send("Cookie is deleted.");
-});
-
-app.listen(PORT, HOST, () => {
-    console.log("listening on " + HOST + ":" + PORT + "...");
 });
 
 app.post('/', function (req, res) {
@@ -119,9 +145,11 @@ app.delete('/user', function (req, res) {
   res.send('Got a DELETE request at /user');
 });
 
-app.all('*', function (req, res) {
-    response.status(HttpStatus.NOT_FOUND)
-    response.send({
-        error: HttpStatus.getStatusText(HttpStatus.NOT_FOUND)
-    })
+app.all('*', function(req, res) {
+    res.sendStatus(http_status.NOT_FOUND);
 });
+
+app.listen(PORT, HOST, () => {
+    console.log("listening on " + HOST + ":" + PORT + "...");
+});
+

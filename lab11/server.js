@@ -49,22 +49,16 @@ app.get('/api/comments', function(req, res) {
 });
 
 app.post('/api/comments', function(req, res) {
-  fs.readFile(COMMENTS_FILE, function(err, data) {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
-    var newComment = {
-      id: Date.now(),
-      author: req.body.author,
-      text: req.body.text,
-    };
-    db.collection("cs336").insertOne(newComment, function(err, result) {
+  var newComment = {
+    id: Date.now(),
+    author: req.body.author,
+    text: req.body.text,
+  };
+  db.collection("cs336").insertOne(newComment, function(err, result) {
+    if (err) throw err;
+    db.collection("cs336").find({}).toArray(function(err, docs) {
         if (err) throw err;
-        db.collection("cs336").find({}).toArray(function(err, docs) {
-            if (err) throw err;
-            res.json(docs);
-        });
+        res.json(docs);
     });
   });
 });

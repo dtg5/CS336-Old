@@ -87,6 +87,18 @@ app.delete('/api/comments/:id', function(req, res) {
         });
 });
 
+app.delete('/api/comments/:id', function(req, res) {
+    db.collection("cs336").deleteOne(
+        {'id': Number(req.params.id)},
+        function(err, result) {
+            if (err) throw err;
+            db.collection("cs336").find({}).toArray(function(err, docs) {
+                if (err) throw err;
+                res.json(docs);
+            });
+        });
+});
+
 // Send all routes/methods not specified above to the app root.
 app.use('*', express.static(APP_PATH));
 
