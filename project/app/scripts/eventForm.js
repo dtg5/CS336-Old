@@ -45,7 +45,7 @@ module.exports = React.createClass({
           value={this.state.startDate}
           onChange={this.handleStartDateChange}
         />
-         <input
+        <input
           type="date"
           value={this.state.startDate}
           onChange={this.handleEndDateChange}

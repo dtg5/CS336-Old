@@ -10,7 +10,7 @@ module.exports = React.createClass({
     getInitialState: function() {
         return {data: []};
     },
-    loadeventsFromServer: function() {
+    loadEventsFromServer: function() {
         $.ajax({
             url: API_URL2,
             dataType: 'json',
@@ -43,7 +43,7 @@ module.exports = React.createClass({
          }.bind(this));
     },
     componentDidMount: function() {
-        this.loadeventsFromServer();
+        this.loadEventsFromServer();
         setInterval(this.loadEventsFromServer, POLL_INTERVAL);
     },
     render: function() {
