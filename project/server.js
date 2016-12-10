@@ -85,14 +85,14 @@ app.post('/api/comments', function(req, res) {
 
 //EVENTS
 app.post('/api/events', function(req, res) {
-    var newComment = {
+    var newEvent = {
         id: Date.now(),
         title: req.body.title,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
         description: req.body.description,
     };
-    db.collection("VGSevents").insertOne(newComment, function(err, result) {
+    db.collection("VGSevents").insertOne(newEvent, function(err, result) {
         if (err) throw err;
         var newId = result.insertedId;
         db.collection("VGSevents").find({}).toArray(function(err, docs) {

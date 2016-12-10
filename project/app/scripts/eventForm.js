@@ -42,13 +42,11 @@ module.exports = React.createClass({
         />
         <input
           type="date"
-          placeholder="start Date"
           value={this.state.startDate}
           onChange={this.handleStartDateChange}
         />
          <input
           type="date"
-          placeholder="end Date"
           value={this.state.startDate}
           onChange={this.handleEndDateChange}
         />

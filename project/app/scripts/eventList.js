@@ -7,7 +7,7 @@ import event from './event';
 
 module.exports = React.createClass({
   render: function() {
-    var EventNodes = this.props.data.map(function(event) {
+    var eventNodes = this.props.data.map(function(event) {
       return (
         <event id={event.id} title={event.title} key={event.id}>
           {event.startdate}
