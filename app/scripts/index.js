@@ -13,6 +13,8 @@ import CommentEdit from './commentEdit';
 import eventBox from './eventBox';
 import eventEdit from './eventEdit';
 
+//import calendar from './eventCalendar.js';
+
 import '../css/base.css';
 
 
