@@ -6,7 +6,7 @@ import { API_URL2 } from './global';
 
 module.exports = React.createClass({
     getInitialState: function() {
-        return {title: '', startDate: '', endDate: '', description: ''};
+        return {title: '', description: '', startDate: '', endDate: ''};
     },
     componentDidMount: function() {
         this.loadData();
@@ -17,27 +17,27 @@ module.exports = React.createClass({
         }
     },
     loadData: function() {
-        $.ajax(API_URL2 + "/" + this.props.params.id) .done(function(events) {
-            this.setState(events[0]);
+        $.ajax(API_URL2 + "/" + this.props.params.id) .done(function(comments) {
+            this.setState(comments[0]);
         }.bind(this));
     },
     handleTitleChange: function(e) {
         this.setState({title: e.target.value});
     },
-    handleDescriptionChange: function(e) {
+    handleDecsriptionChange: function(e) {
         this.setState({description: e.target.value});
     },
-    handleStartDateChange: function(e) {
-    this.setState({startDate: e.target.value});
+    handleStartChange: function(e) {
+        this.setState({startDate: e.target.value});
     },
-    handleEndDateChange: function(e) {
-    this.setState({endDate: e.target.value});
+    handleEndChange: function(e) {
+        this.setState({endDate: e.target.value});
     },
     contextTypes: {
         router: React.PropTypes.object
     },
     handleUpdate: function() {
-        var updatedEvent = {
+        var updatedComment = {
             title: this.state.title.trim(),
             description: this.state.description.trim(),
             startDate: this.state.startDate.trim(),
@@ -48,9 +48,9 @@ module.exports = React.createClass({
             dataType: 'json',
             type: 'PUT',
             contentType:'application/json',
-            data: JSON.stringify(updatedEvent)
+            data: JSON.stringify(updatedComment)
         })
-            .done(function(events){
+            .done(function(comments){
                 this.context.router.push('/');
             }.bind(this))
             .fail(function(xhr, status, errorThrown) {
@@ -65,7 +65,7 @@ module.exports = React.createClass({
             dataType: 'json',
             type: 'DELETE',
         })
-            .done(function(events){
+            .done(function(comments){
                 this.context.router.push('/');
             }.bind(this))
             .fail(function(xhr, status, errorThrown) {
@@ -77,8 +77,8 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div>
-                <form className="eventForm">
-                    <h1>Event Edit - {this.state.id}</h1>
+                <form className="commentForm">
+                    <h1>Comment Edit - {this.state.id}</h1>
                     <input
                         type="text"
                         value={this.state.title}
@@ -89,16 +89,16 @@ module.exports = React.createClass({
                         value={this.state.description}
                         onChange={this.handleDescriptionChange}
                     />
-                     <input
+                    <input
                         type="date"
                         value={this.state.startDate}
-                        onChange={this.handleStartDateChange}
+                        onChange={this.handleStartChange}
                     />
-                     <input
+                    <input
                         type="date"
                         value={this.state.endDate}
-                        onChange={this.handleEndDateChange}
-                     />
+                        onChange={this.handleEndChange}
+                    />
                     <button type="button" onClick={this.handleUpdate}>Update</button>
                     <button type="button" onClick={this.handleDelete}>Delete</button>
                 </form>

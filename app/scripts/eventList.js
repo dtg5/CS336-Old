@@ -2,22 +2,23 @@ import React from 'react';
 import $ from 'jquery';
 import Remarkable from 'remarkable';
 
-import event from './event';
+import Comment from './event';
 
 
 module.exports = React.createClass({
   render: function() {
-    var eventNodes = this.props.data.map(function(event) {
+    var commentNodes = this.props.data.map(function(comment) {
       return (
-        <event id={event.id} title={event.title} key={event.id}>
-          {event.startDate}
-          {event.description}
-        </event>
+        <Comment id={comment.id} title={comment.title} key={comment.id}>
+          {comment.description}
+          {comment.startDate}
+          {comment.endDate}
+        </Comment>
       );
     });
     return (
-      <div className="eventList">
-        {eventNodes}
+      <div className="commentList">
+        {commentNodes}
       </div>
     );
   }

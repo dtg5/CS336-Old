@@ -12,8 +12,8 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="event">
-        <h2 className="eventTitle">
+      <div className="comment">
+        <h2 className="commentAuthor">
           {this.props.title}
         </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
