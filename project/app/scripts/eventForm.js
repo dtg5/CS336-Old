@@ -5,56 +5,58 @@ import $ from 'jquery'
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {title: '', startDate: '', endDate: '', description: ''};
+    return {title: '', description: ''};
   },
   handleTitleChange: function(e) {
     this.setState({title: e.target.value});
   },
-  handleStartDateChange: function(e) {
-    this.setState({startDate: e.target.value});
-  },
-  handleEndDateChange: function(e) {
-    this.setState({endDate: e.target.value});
-  },
   handleDescriptionChange: function(e) {
     this.setState({description: e.target.value});
+  },
+   handleStartChange: function(e) {
+    this.setState({startDate: e.target.value});
+  },
+  handleEndChange: function(e) {
+    this.setState({endDate: e.target.value});
   },
    handleSubmit: function(e) {
     e.preventDefault();
     var title = this.state.title.trim();
+    var description = this.state.description.trim();
     var startDate = this.state.startDate.trim();
     var endDate = this.state.endDate.trim();
-    var description = this.state.description.trim();
-    if (!startDate || !title || !endDate || !description) {
+    if (!title || !description || !startDate || !endDate) {
       return;
     }
-    this.props.onEventSubmit({title: title, startDate: startDate, endDate: endDate, description: description});
-    this.setState({title: '', startDate: '', endDate: '', description: ''});
+    this.props.onCommentSubmit({title: title, description: description, startDate: startDate, endDate: endDate});
+    this.setState({title: '', description: '', startDate: '', endDate: ''});
   },
   render: function() {
     return (
-       <form className="eventForm" onSubmit={this.handleSubmit}>
+       <form className="commentForm" onSubmit={this.handleSubmit}>
         <input
           type="text"
-          placeholder="Title of event"
+          placeholder="Event title"
           value={this.state.title}
           onChange={this.handleTitleChange}
         />
         <input
-          type="date"
-          value={this.state.startDate}
-          onChange={this.handleStartDateChange}
+          type="text"
+          placeholder="Event Description"
+          value={this.state.description}
+          onChange={this.handleDescriptionChange}
         />
         <input
           type="date"
+          placeholder="Start Date"
           value={this.state.startDate}
-          onChange={this.handleEndDateChange}
+          onChange={this.handleStartChange}
         />
-         <input
-          type="text"
-          placeholder="description"
-          value={this.state.description}
-          onChange={this.handleDescriptionChange}
+        <input
+          type="date"
+          placeholder="End of event"
+          value={this.state.endDate}
+          onChange={this.handleEndChange}
         />
         <input type="submit" value="Post" />
       </form>

@@ -5,9 +5,6 @@ import $ from 'jquery';
 import CommentList from './commentList';
 import CommentForm from './commentForm';
 
-import eventList from './eventList';
-import eventForm from './eventForm';
-import eventBox from './eventBox'
 import { API_URL, POLL_INTERVAL } from './global';
 
 module.exports = React.createClass({

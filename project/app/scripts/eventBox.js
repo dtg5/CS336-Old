@@ -2,15 +2,17 @@
 import React from 'react';
 import $ from 'jquery';
 
-import eventList from './eventList';
-import eventForm from './eventForm';
+import CommentList from './eventList';
+import CommentForm from './eventForm';
+
+
 import { API_URL2, POLL_INTERVAL } from './global';
 
 module.exports = React.createClass({
     getInitialState: function() {
         return {data: []};
     },
-    loadEventsFromServer: function() {
+    loadCommentsFromServer: function() {
         $.ajax({
             url: API_URL2,
             dataType: 'json',
@@ -23,35 +25,35 @@ module.exports = React.createClass({
              console.error(this.props.url, status, errorThrown.toString());
          }.bind(this));
     },
-    handleEventSubmit: function(event) {
-        var events = this.state.data;
-        event.id = Date.now();
-        var newevents = events.concat([event]);
-        this.setState({data: newevents});
+    handleCommentSubmit: function(comment) {
+        var comments = this.state.data;
+        comment.id = Date.now();
+        var newComments = comments.concat([comment]);
+        this.setState({data: newComments});
         $.ajax({
             url: API_URL2,
             dataType: 'json',
             type: 'POST',
-            data: event,
+            data: comment,
         })
          .done(function(result){
              this.setState({data: result});
          }.bind(this))
          .fail(function(xhr, status, errorThrown) {
-             this.setState({data: events});
+             this.setState({data: comments});
              console.error(API_URL2, status, errorThrown.toString());
          }.bind(this));
     },
     componentDidMount: function() {
-        this.loadEventsFromServer();
-        setInterval(this.loadEventsFromServer, POLL_INTERVAL);
+        this.loadCommentsFromServer();
+        setInterval(this.loadCommentsFromServer, POLL_INTERVAL);
     },
     render: function() {
         return (
-            <div className="eventBox">
-                <h1>events</h1>
-                <eventList data={this.state.data} />
-                <eventForm onEventSubmit={this.handleEventSubmit} />
+            <div className="commentBox">
+                <h1>Events</h1>
+                <CommentList data={this.state.data} />
+                <CommentForm onCommentSubmit={this.handleCommentSubmit} />
             </div>
         );
     }
