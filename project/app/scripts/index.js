@@ -1,7 +1,5 @@
 //Lisa Terwilliger
 
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 //lab12
@@ -13,7 +11,7 @@ import CommentEdit from './commentEdit';
 import eventBox from './eventBox';
 import eventEdit from './eventEdit';
 
-//import calendar from './eventCalendar.js';
+import calendar from './eventCalendar.js';
 
 import '../css/base.css';
 
@@ -35,3 +33,9 @@ ReactDOM.render((
     </Router>
 ), document.getElementById('event')
 );
+
+ReactDOM.render((
+    <calendar/>
+), document.getElementById('calendar')
+);
+
