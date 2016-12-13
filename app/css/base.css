@@ -205,7 +205,7 @@ z-index: -1;
   perspective-origin: 50% 50%;
 }
 
-header {
+.header {
   width: 300px;
   margin: 20px auto;
   background-repeat: no-repeat;
