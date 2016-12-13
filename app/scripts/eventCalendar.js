@@ -1,24 +1,35 @@
-const EventCalendar = require('react-event-calendar');
- 
-const events = [
-    {
-        start: '2015-07-20',
-        end: '2015-07-02',
-        title: 'test event',
-        description: 'This is a test description of an event',
-    },
-    {
-        start: '2015-07-19',
-        end: '2015-07-25',
-        title: 'test event',
-        description: 'This is a test description of an event',
+import React from 'react';
+import $ from 'jquery';
+import Remarkable from 'remarkable';
 
-    },
-];
- 
-<EventCalendar 
-    month={7}
-    year={2015}
-    events={events} 
-    onEventClick={(target, eventData, day) => console.log(eventData) 
+import Comment from './event';
+
+
+const EventCalendar = require('react-event-calendar');
+
+
+
+module.exports = React.createClass({
+  render: function() {
+    var events = this.props.data.map(function(comment) {
+      return (
+        <Comment id={comment.id} title={comment.title} key={comment.id}>
+          {comment.startDate}
+          {comment.endDate}
+        </Comment>
+      );
+    });
+    return (
+      <div>
+      <EventCalendar 
+        month={12}
+        year={2016}
+        events={events} 
+        onEventClick={(target, eventData, day) => console.log(eventData)} 
     />
+      </div>
+    );
+  }
+});
+
+
