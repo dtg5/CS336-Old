@@ -11,7 +11,7 @@ import CommentEdit from './commentEdit';
 import eventBox from './eventBox';
 import eventEdit from './eventEdit';
 
-import app from './app.js';
+import start from './start.js';
 import homePage from './homePage.js';
 import about from './about.js';
 
@@ -41,7 +41,7 @@ ReactDOM.render((
 //attempt at routing
 ReactDOM.render((
     <Router history={browserHistory}>
-        <Route path="/" component={app}>
+        <Route path="/" component={start}>
          	<IndexRoute component={homePage}/>
         	<Route path="/about" component={About} />
             <Route path="/comments" component={commentBox} />
