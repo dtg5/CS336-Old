@@ -19,9 +19,6 @@ module.exports = React.createClass({
    handleStartChange: function(e) {
     this.setState({startDate: e.target.value});
   },
-  handleEndChange: function(e) {
-    this.setState({endDate: e.target.value});
-  },
    handleSubmit: function(e) {
     e.preventDefault();
     var title = this.state.title.trim();
@@ -29,11 +26,11 @@ module.exports = React.createClass({
     var time = this.state.time.trim();
     var startDate = this.state.startDate.trim();
     var endDate = this.state.endDate.trim();
-    if (!title || !description || !time || !startDate || !endDate) {
+    if (!title || !description || !time || !startDate) {
       return;
     }
-    this.props.onCommentSubmit({title: title, description: description, time: time, startDate: startDate, endDate: endDate});
-    this.setState({title: '', description: '', time: '', startDate: '', endDate: ''});
+    this.props.onCommentSubmit({title: title, description: description, time: time, startDate: startDate});
+    this.setState({title: '', description: '', time: '', startDate: ''});
   },
   render: function() {
     return (
@@ -62,12 +59,7 @@ module.exports = React.createClass({
           value={this.state.startDate}
           onChange={this.handleStartChange}
         />
-        <input
-          type="date"
-          placeholder="End of event"
-          value={this.state.endDate}
-          onChange={this.handleEndChange}
-        />
+
         <input type="submit" value="Post" />
       </form>
     );

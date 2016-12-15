@@ -13,7 +13,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="event">
-        <h3 className="eventAuthor">
+        <h3 className="eventTitle">
           {this.props.title}
         </h3>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />

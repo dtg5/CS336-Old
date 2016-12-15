@@ -11,10 +11,9 @@ module.exports = React.createClass({
     var eventNodes = this.props.data.map(function(event) {
       return (
         <Event id={event.id} title={event.title} key={event.id}>
-          {event.description} {"\n"}
-          {event.startDate}   {"\n"}
-          Starts at:{event.time}  {"\n"}
-          {event.endDate}
+          {event.description + '\n' +
+           event.startDate + '\n' +
+           "From: " + event.time}
         </Event>
 
       );

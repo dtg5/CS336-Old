@@ -89,7 +89,6 @@ app.post('/api/events', function(req, res) {
         id: Date.now(),
         title: req.body.title,
         startDate: req.body.startDate,
-        endDate: req.body.endDate,
         description: req.body.description,
         time: req.body.time,
     };
