@@ -11,6 +11,10 @@ import CommentEdit from './commentEdit';
 import eventBox from './eventBox';
 import eventEdit from './eventEdit';
 
+import app from './app.js';
+import homePage from './homePage.js';
+import about from './about.js';
+
 import calendar from './eventCalendar.js';
 
 import '../css/base.css';
@@ -34,8 +38,17 @@ ReactDOM.render((
 ), document.getElementById('event')
 );
 
+//attempt at routing
 ReactDOM.render((
-    <calendar/>
-), document.getElementById('calendar')
-);
+    <Router history={browserHistory}>
+        <Route path="/" component={app}>
+         	<IndexRoute component={homePage}/>
+        	<Route path="/about" component={About} />
+            <Route path="/comments" component={commentBox} />
+        	<Route path="/comments/:id" component={commentEdit} />
+        	<Route path="/events" component={eventBox} />
+        	<Route path="/events/:id" component={eventEdit} />		
+        </Route>
+    </Router>
+), document.getElementById('content'));
 
