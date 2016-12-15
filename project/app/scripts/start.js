@@ -2,7 +2,7 @@
 //Starting page with all the links
 
 import React from 'react'
-import links from './links'
+import { Link } from 'react-router';
 
 export default React.createClass({
   render() {
@@ -10,10 +10,10 @@ export default React.createClass({
       <div>
         <h1>VGS Website</h1>
         <ul role="nav">
-          <li><NavLink to="/" onlyActiveOnIndex>Home</links></li>
-          <li><NavLink to="/about">About</links></li>
-          <li><NavLink to="/events">Events</links></li>
-          <li><NavLink to="/comments">Comments</links></li>
+          <li><Link to="/" onlyActiveOnIndex>Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/events">Events</Link></li>
+          <li><Link to="/comments">Comments</Link></li>
         </ul>
         {this.props.children}
       </div>

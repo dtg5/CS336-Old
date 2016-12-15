@@ -51,7 +51,7 @@ module.exports = React.createClass({
             data: JSON.stringify(updatedComment)
         })
             .done(function(comments){
-                this.context.router.push('/');
+                this.context.router.push('/events');
             }.bind(this))
             .fail(function(xhr, status, errorThrown) {
                 console.error(API_URL2, status, errorThrown.toString());
@@ -66,7 +66,7 @@ module.exports = React.createClass({
             type: 'DELETE',
         })
             .done(function(comments){
-                this.context.router.push('/');
+                this.context.router.push('/events');
             }.bind(this))
             .fail(function(xhr, status, errorThrown) {
                 console.error(API_URL2, status, errorThrown.toString());
@@ -78,7 +78,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <form className="commentForm">
-                    <h1>Comment Edit - {this.state.id}</h1>
+                    <h1>Event Edit - {this.state.id}</h1>
                     <input
                         type="text"
                         value={this.state.title}
@@ -102,7 +102,7 @@ module.exports = React.createClass({
                     <button type="button" onClick={this.handleUpdate}>Update</button>
                     <button type="button" onClick={this.handleDelete}>Delete</button>
                 </form>
-                <Link to='/'>Cancel</Link>
+                <Link to='/events'>Cancel</Link>
             </div>
         );
     }
