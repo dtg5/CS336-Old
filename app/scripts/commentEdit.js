@@ -43,7 +43,7 @@ module.exports = React.createClass({
             data: JSON.stringify(updatedComment)
         })
             .done(function(comments){
-                this.context.router.push('/');
+                this.context.router.push('/comments');
             }.bind(this))
             .fail(function(xhr, status, errorThrown) {
                 console.error(API_URL, status, errorThrown.toString());
@@ -58,7 +58,7 @@ module.exports = React.createClass({
             type: 'DELETE',
         })
             .done(function(comments){
-                this.context.router.push('/');
+                this.context.router.push('/comments');
             }.bind(this))
             .fail(function(xhr, status, errorThrown) {
                 console.error(API_URL, status, errorThrown.toString());
@@ -84,7 +84,7 @@ module.exports = React.createClass({
                     <button type="button" onClick={this.handleUpdate}>Update</button>
                     <button type="button" onClick={this.handleDelete}>Delete</button>
                 </form>
-                <Link to='/'>Cancel</Link>
+                <Link to='/comments'>Cancel</Link>
             </div>
         );
     }
