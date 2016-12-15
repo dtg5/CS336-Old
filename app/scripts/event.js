@@ -12,10 +12,10 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="comment">
-        <h2 className="commentAuthor">
+      <div className="event">
+        <h3 className="eventAuthor">
           {this.props.title}
-        </h2>
+        </h3>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
         <Link to={'/events/' + this.props.id}>Edit</Link>
       </div>

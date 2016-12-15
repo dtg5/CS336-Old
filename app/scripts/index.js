@@ -12,7 +12,6 @@ import eventBox from './eventBox';
 import eventEdit from './eventEdit';
 
 import start from './start.js';
-import homePage from './homePage.js';
 import about from './about.js';
 
 import calendar from './eventCalendar.js';
@@ -25,7 +24,7 @@ import '../css/base.css';
 ReactDOM.render((
     <Router history={browserHistory}>
     	<Route path="/" component={start}>
-    		<IndexRoute component={homePage}/>
+    		<IndexRoute component={commentBox}/>
             <Route path="/comments" component={commentBox} />
         	<Route path="/comments/:id" component={commentEdit} />	
         	<Route path="/events" component={eventBox} />

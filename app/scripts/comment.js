@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 module.exports = React.createClass({
   rawMarkup: function() {
-    var md = new Remarkable({html: true});
+    var md = new Remarkable();
     var rawMarkup = md.render(this.props.children.toString());
     return { __html: rawMarkup };
   },

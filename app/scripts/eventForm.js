@@ -13,6 +13,9 @@ module.exports = React.createClass({
   handleDescriptionChange: function(e) {
     this.setState({description: e.target.value});
   },
+  handleTimeChange: function(e) {
+    this.setState({time: e.target.value});
+  },
    handleStartChange: function(e) {
     this.setState({startDate: e.target.value});
   },
@@ -23,13 +26,14 @@ module.exports = React.createClass({
     e.preventDefault();
     var title = this.state.title.trim();
     var description = this.state.description.trim();
+    var time = this.state.time.trim();
     var startDate = this.state.startDate.trim();
     var endDate = this.state.endDate.trim();
-    if (!title || !description || !startDate || !endDate) {
+    if (!title || !description || !time || !startDate || !endDate) {
       return;
     }
-    this.props.onCommentSubmit({title: title, description: description, startDate: startDate, endDate: endDate});
-    this.setState({title: '', description: '', startDate: '', endDate: ''});
+    this.props.onCommentSubmit({title: title, description: description, time: time, startDate: startDate, endDate: endDate});
+    this.setState({title: '', description: '', time: '', startDate: '', endDate: ''});
   },
   render: function() {
     return (
@@ -45,6 +49,12 @@ module.exports = React.createClass({
           placeholder="Event Description"
           value={this.state.description}
           onChange={this.handleDescriptionChange}
+        />
+        <input
+          type="text"
+          placeholder="Event time"
+          value={this.state.time}
+          onChange={this.handleTimeChange}
         />
         <input
           type="date"

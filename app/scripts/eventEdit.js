@@ -6,7 +6,7 @@ import { API_URL2 } from './global';
 
 module.exports = React.createClass({
     getInitialState: function() {
-        return {title: '', description: '', startDate: '', endDate: ''};
+        return {title: '', description: '', time: '', startDate: '', endDate: ''};
     },
     componentDidMount: function() {
         this.loadData();
@@ -27,6 +27,9 @@ module.exports = React.createClass({
     handleDecsriptionChange: function(e) {
         this.setState({description: e.target.value});
     },
+    handleTimeChange: function(e) {
+        this.setState({time: e.target.value});
+    },
     handleStartChange: function(e) {
         this.setState({startDate: e.target.value});
     },
@@ -40,6 +43,7 @@ module.exports = React.createClass({
         var updatedComment = {
             title: this.state.title.trim(),
             description: this.state.description.trim(),
+            time: this.state.time.trim(),
             startDate: this.state.startDate.trim(),
             endDate: this.state.endDate.trim()
         }
@@ -89,6 +93,12 @@ module.exports = React.createClass({
                         value={this.state.description}
                         onChange={this.handleDescriptionChange}
                     />
+                    <input
+                        type="text"
+                        value={this.state.time}
+                        onChange={this.handleTimeChange}
+                    />
+
                     <input
                         type="date"
                         value={this.state.startDate}
