@@ -17,7 +17,7 @@ module.exports = React.createClass({
           {this.props.title}
         </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
-        <Link to={'/' + this.props.id}>Edit</Link>
+        <Link to={'/events/' + this.props.id}>Edit</Link>
       </div>
     );
   }
