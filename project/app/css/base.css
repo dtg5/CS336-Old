@@ -1,11 +1,5 @@
-div#event{
-  float: right;
-  width: 49%;
-}
-
-div#content{
-  float: left;
-  width: 49%;
+.event {
+  white-space: pre-line;
 }
 
 body {
@@ -52,7 +46,9 @@ h2 {
     font-size: 2em;
 }
 
-h3 {
+h3  {
+    border-bottom: 6px solid grey;
+    background-color: lightgrey;
     font-size: 1.5em;
 }
 

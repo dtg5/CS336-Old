@@ -91,6 +91,7 @@ app.post('/api/events', function(req, res) {
         startDate: req.body.startDate,
         endDate: req.body.endDate,
         description: req.body.description,
+        time: req.body.time,
     };
     db.collection("VGSevents").insertOne(newEvent, function(err, result) {
         if (err) throw err;
