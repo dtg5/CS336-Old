@@ -17,6 +17,10 @@ export default React.createClass({
     			offer. Through video gaming events, we hope to challenge and support students on their way to a fuller understanding
     			 of the importance of video gaming. We gather. We game. We engage.</p>
 
+                 <p> President: Lisa Terwilliger</p>
+                 <p> Vice President: Phil Terwilliger</p>
+                 <p> Financial Officer: Rachel Gamber</p>
+
     			</div>
   }
 })
