@@ -6,7 +6,7 @@ import { API_URL2 } from './global';
 
 module.exports = React.createClass({
     getInitialState: function() {
-        return {title: '', description: '', time: '', startDate: '', endDate: ''};
+        return {title: '', description: '', time: '', startDate: ''};
     },
     componentDidMount: function() {
         this.loadData();
@@ -33,9 +33,6 @@ module.exports = React.createClass({
     handleStartChange: function(e) {
         this.setState({startDate: e.target.value});
     },
-    handleEndChange: function(e) {
-        this.setState({endDate: e.target.value});
-    },
     contextTypes: {
         router: React.PropTypes.object
     },
@@ -45,7 +42,7 @@ module.exports = React.createClass({
             description: this.state.description.trim(),
             time: this.state.time.trim(),
             startDate: this.state.startDate.trim(),
-            endDate: this.state.endDate.trim()
+
         }
         $.ajax({
             url: API_URL2 + "/" + this.props.params.id,
@@ -104,11 +101,7 @@ module.exports = React.createClass({
                         value={this.state.startDate}
                         onChange={this.handleStartChange}
                     />
-                    <input
-                        type="date"
-                        value={this.state.endDate}
-                        onChange={this.handleEndChange}
-                    />
+
                     <button type="button" onClick={this.handleUpdate}>Update</button>
                     <button type="button" onClick={this.handleDelete}>Delete</button>
                 </form>

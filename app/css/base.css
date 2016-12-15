@@ -64,6 +64,10 @@ ul {
     padding-left: 30px;
 }
 
+span {
+  white-space: pre;
+}
+
 @import url(http://fonts.googleapis.com/css?family=Audiowide);
 
 .ball {
