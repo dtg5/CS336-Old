@@ -17,14 +17,14 @@ export default React.createClass({
         </ul>
         {this.props.children}
       </div>
-      <div class="area">
-        <section class="stage">
-          <figure class="ball">
-            <span class="shadow"></span>
-            <span class="eight"></span>
-          </figure>
-        </section>
-      </div>
+      // <div class="area">
+      //   <section class="stage">
+      //     <figure class="ball">
+      //       <span class="shadow"></span>
+      //       <span class="eight"></span>
+      //     </figure>
+      //   </section>
+      // </div>
     )
   }
 })
