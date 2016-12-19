@@ -1,3 +1,8 @@
+img{
+  width: 10%;
+
+}
+
 body {
     background: -webkit-radial-gradient(circle, #fff, #ccffff, #66ccff); /* For Safari 5.1 to 6.0 */
     background: -o-radial-gradient(circle, #fff, #ccffff, #66ccff); /* For Opera 11.6 to 12.0 */
